@@ -1,0 +1,109 @@
+<ng-container *ngIf="!issubmit">
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+               
+                <div class="col-md-6 offset-md-3">                  
+                    <h1 class="card-title text-center">Welcome to Amazing-Portfolio </h1>
+                    <div class="container">
+                        <div class="d-flex justify-content-center h-100">
+                            <div class="card">
+                                 <div class="card-header">
+                                    <h3>Sign In</h3>
+                                    <div class="d-flex justify-content-end social_icon">
+                                        <span><i class="fab fa-facebook-square"></i></span>
+                                        <span><i class="fab fa-google-plus-square"></i></span>
+                                        <span><i class="fab fa-twitter-square"></i></span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 *ngIf="wrong" [ngClass] = "'wrong'" >
+                                       wrong Credentials!
+                                </h5>
+                                    <form [formGroup]='form' (ngSubmit)="click()">
+                                        <div class="input-group form-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control" formControlName="email"
+                                                placeholder="username"
+                                                [ngClass]="{'is-invalid':submitted && f['email'].errors}">
+
+                                            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                                                <div *ngIf="f['email'].errors['required']">
+                                                    Email can not be empty
+                                                </div>
+                                                <div *ngIf="f['email'].errors['email']">
+                                                    Kindly provide Valid Email Id
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="input-group form-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                            </div>
+                                            <input type="password" class="form-control" formControlName="password"
+                                                placeholder="password"
+                                                [ngClass]="{'is-invalid':submitted && f['password'].errors}">
+
+                                            <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                                                <div *ngIf="f['password'].errors['required']">
+                                                    Pasword can not be empty
+                                                </div>
+                                                <div *ngIf="f['password'].errors['minlength']">
+                                                    Pasword must be 8 character long
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn float-right login_btn">SignIn</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-center links">
+                                        Don't have an account?<button class="btn float-right login_btn"
+                                            routerLink="/sign-up">signUp</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="issubmit">
+    <div class="jumbotron">
+       
+        <div class="container">
+            <div class="row">
+                <h5 *ngIf="correct" [ngClass] = "'success'" >
+                    signed in successfully.
+                </h5>
+                <div class="col-md-6 offset-md-3">
+                    <h1 class="card-title text-center">Welcome to Amazing-Portfolio </h1>
+                    <div class="container">
+                        <div class="d-flex justify-content-center h-100">
+                            <div class="card">
+
+                                <div class="card-header" style="background-color:green;">
+                                    <h1>Your Deatils</h1>
+                                </div>
+                                <div class="card-body" style="background-color: yellow;">
+                                    <h2>Name: {{firstname1}}
+                                    {{lastname1}}</h2>
+                                   <h3>Gender: {{gender1}}</h3> 
+                                   <h3>Email: {{email1}}</h3> 
+                                   <h3>password: {{password1}}</h3> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
